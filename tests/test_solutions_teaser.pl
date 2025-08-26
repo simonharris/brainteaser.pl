@@ -34,14 +34,10 @@ test(solution_1914_lunch) :-
     once(solution1914(First, Second, Third, Fourth)),
     assertion((First = kirsten-lasagne, Second = kelly-baguette, Third = troy-curry, Fourth = sharon-soup)).
 
-
-% test(solution_1914_lunch1) :-
-%     once(solution1914(First, Second, Third, Fourth)),
-%     assert_output(
-%         solution_1904(First, Second, Third, Fourth),
-%         [First,           Second,         Third,      Fourth],
-%         [kirsten-lasagna, kelly-baguette, troy-curry, sharon-soup]
-%     ).
-
+test(solution_1914_lunch1) :-
+    assert_output(solution1914(First, Second, Third, Fourth),
+        [First,           Second,         Third,      Fourth],
+        [kirsten-lasagne, kelly-baguette, troy-curry, sharon-soup]
+    ).
 
 :- end_tests(brain_teaser_solutions).
