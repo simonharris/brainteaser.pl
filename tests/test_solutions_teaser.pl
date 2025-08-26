@@ -1,14 +1,22 @@
-:- begin_tests(brain_teaser_solutions).
+:- use_module(library(plunit_assert)).
+
 :- consult('../solutions/teaser1904_graduation').
 :- consult('../solutions/teaser1905_dice').
 :- consult('../solutions/teaser1907_karaoke').
 :- consult('../solutions/teaser1909_houses').
+:- consult('../solutions/teaser1914_lunch').
+
+
+:- begin_tests(brain_teaser_solutions).
 
 % These are largely pointless, but think of it as checking the solutions page
 
 test(solution_1904_graduation) :-
-    once(solution_1904(MathsVenue, HistoryVenue, LawVenue, MusicVenue)),
-    assertion((MathsVenue = 8, HistoryVenue = 1, LawVenue = 4, MusicVenue = 2 )).
+    assert_output(
+        solution_1904(MathsVenue, HistoryVenue, LawVenue, MusicVenue),
+        [MathsVenue, HistoryVenue, LawVenue, MusicVenue],
+        [8,          1,            4,        2]
+    ).
 
 test(solution_1905_graduation) :-
     once(solution1905(Jackie1, Jackie2, Ethel1, Ethel2, Len1, Len2)),
@@ -21,3 +29,19 @@ test(solution_1907_karaoke) :-
 test(solution_1909_houses) :-
     once(solution1909(Two, Four, Six, Eight)),
     assertion((Two = jay-grey, Four = ray-blue, Six = fay-white, Eight = may-red)).
+
+test(solution_1914_lunch) :-
+    once(solution1914(First, Second, Third, Fourth)),
+    assertion((First = kirsten-lasagne, Second = kelly-baguette, Third = troy-curry, Fourth = sharon-soup)).
+
+
+% test(solution_1914_lunch1) :-
+%     once(solution1914(First, Second, Third, Fourth)),
+%     assert_output(
+%         solution_1904(First, Second, Third, Fourth),
+%         [First,           Second,         Third,      Fourth],
+%         [kirsten-lasagna, kelly-baguette, troy-curry, sharon-soup]
+%     ).
+
+
+:- end_tests(brain_teaser_solutions).
